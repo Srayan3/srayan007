@@ -728,9 +728,15 @@
         function countYearsFrom2009() {
             const start = new Date("2009-07-16");
             const now = new Date();
-        
-            const years = now.getFullYear() - start.getFullYear();
-            document.getElementById("ageSpan").textContent = years;
+                    
+            let age = now.getFullYear() - start.getFullYear();
+            const hasHadBirthday =
+              now.getMonth() > start.getMonth() ||
+              (now.getMonth() === start.getMonth() && now.getDate() >= start.getDate());
+                    
+            if (!hasHadBirthday) age--;
+                    
+            document.getElementById("ageSpan").textContent = age;
 
             const currentYear = now.getFullYear();
 
